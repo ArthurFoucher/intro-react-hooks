@@ -1,8 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
 export const App: React.FC = () => {
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount(c => c + 1);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
 
   return (
     <div className='container'>
