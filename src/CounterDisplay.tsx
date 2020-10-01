@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
-import { CountContext } from './contexts/count.context';
+import React from 'react';
+import { useCount } from './contexts/count.context';
 
 export const CounterDisplay: React.FC = () => {
-  const count = useContext(CountContext);
+  const count = useCount();
 
   return <div>count: {count}</div>;
 };
