@@ -1,24 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import './App.css';
+import { useCounter } from './hooks/useCounter';
 
 export const App: React.FC = () => {
-  const [count, setCount] = useState(0);
-  const incrRef = useRef<1 | -1>(1)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCount(c => c + incrRef.current);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
+  const { count, goUp, goDown } = useCounter();
 
   return (
     <div className='container'>
       <div>count: {count}</div>
       <div>
-        <button onClick={() => incrRef.current = 1}>Increment</button>
-        <button onClick={() => incrRef.current = -1}>Decrement</button>
+        <button onClick={goUp}>Increment</button>
+        <button onClick={goDown}>Decrement</button>
       </div>
     </div>
   );
